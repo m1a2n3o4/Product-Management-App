@@ -1,0 +1,50 @@
+<div class="bg-light vh-100 d-flex justify-content-center align-items-center">
+  <div class="card p-4 shadow-lg" style="width: 400px;">
+    <h3 class="text-center mb-4">Login / Registration</h3>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <!-- Email Field -->
+      <div class="form-group mb-3">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          class="form-control"
+          required
+          [(ngModel)]="user.email"
+          #email="ngModel"
+        />
+        <div *ngIf="email.invalid && email.touched" class="text-danger">
+          Email is required and must be valid.
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div class="form-group mb-3">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="form-control"
+          required
+          minlength="6"
+          [(ngModel)]="user.password"
+          #password="ngModel"
+        />
+        <div *ngIf="password.invalid && password.touched" class="text-danger">
+          Password is required and must be at least 6 characters.
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        [disabled]="form.invalid"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
