@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common';
 import { Person } from '../../../core/models/person.model';
 import { formValidators } from '../../../constants/formvalidations';
 import { NotoficationsComponent } from '../notofications-component/notofications-component';
+import { SkeltonLoaderComponent } from '../skelton-loader-component/skelton-loader-component';
 
 @Component({
   selector: 'app-person-form',
   standalone: true,
-  imports: [FormsModule, CommonModule, NotoficationsComponent],
+  imports: [FormsModule, CommonModule, NotoficationsComponent, SkeltonLoaderComponent],
   templateUrl: './person-form.html',
   styleUrls: ['./person-form.css']
 })

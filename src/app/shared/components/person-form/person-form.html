@@ -5,6 +5,7 @@
  
 -->  
 <div class="bg-light vh-100 d-flex justify-content-center align-items-center">
+    <app-skelton-loader-component></app-skelton-loader-component>
     <div class="card p-4 shadow-lg" style="width: 500px;">
         <h3>{{ person.isRegister ? 'Register you Business!' : 'Login to your Business!'}}</h3>
         <app-notofications-component [errors]="errors"></app-notofications-component>
