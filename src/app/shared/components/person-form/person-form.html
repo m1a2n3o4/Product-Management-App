@@ -1,1 +1,38 @@
-<p>person-form works!</p>
+<!-- This the form used for both Person or business Registration or login'   
+      # Custome validation to be added.
+      # As of of now just do console of forms data.
+      # after Login he we redirect to Dashboard Page.
+ 
+-->  
+<div class="bg-light vh-100 d-flex justify-content-center align-items-center">
+    <div class="card p-4 shadow-lg" style="width: 500px;">
+        <h3>{{ person.isRegister ? 'Register you Business!' : 'Login to your Business!'}}</h3>
+        <app-notofications-component [errors]="errors"></app-notofications-component>
+        <form>
+            <div class="form-group mb-3" *ngIf="person.isRegister">
+                <label for="businessName">Business Name :</label>
+                <input type="text" class="form-control" name="businessName" [(ngModel)] = "person.businessName"/>
+            </div>
+            <div class="form-group mb-3" *ngIf="person.isRegister">
+                <label for="businessName">Full Name :</label>
+                <input type="text" class="form-control" name="fullName" [(ngModel)] = "person.fullName"/>
+            </div>
+            <div class="form-group mb-3">
+                <label for="businessName">User Name :</label>
+                <input type="text" class="form-control" name="userName" [(ngModel)] = "person.userName"/>
+            </div>
+            <div class="form-group mb-3">
+                <label for="businessName">Password :</label>
+                <input type="text" class="form-control" name="password" [(ngModel)] = "person.password"/>
+            </div>
+            <div class="form-group mb-3">
+                <button class="btn btn-primary w-100" (click)="handelForm()">
+                    {{ person.isRegister ? 'Register My Business!' : 'Login to My Business!' }}
+                </button>
+            </div>
+            <div class="form-group">
+              <p>Alredy have account ?  <a href="#" (click)="toggleForm()" >{{ person.isRegister ?  'Login!'  : 'Register!'}}</a> </p>
+            </div>
+        </form>
+    </div>
+</div>

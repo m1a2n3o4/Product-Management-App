@@ -1,1 +1,26 @@
-<p>notofications-component works!</p>
+<div class="alert alert-warning d-none">
+    <strong>Success!</strong> This alert box could indicate a successful or positive action.
+  </div>
+  <div *ngIf="errors.length" class="alert alert-warning" style="width: 400px;">
+    <ul *ngIf="errors.length">
+        <li *ngFor="let error of errors">
+            {{ error }}
+        </li>
+    </ul>
+  <div class="alert alert-warning d-none">
+    <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
+  </div>
+  <div class="alert alert-danger d-none">
+    <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+  </div><div class="alert alert-success d-none">
+    <strong>Success!</strong> This alert box could indicate a successful or positive action.
+  </div>
+  <div class="alert alert-info d-none">
+    <strong>Info!</strong> This alert box could indicate a neutral informative change or action.
+  </div>
+  <div class="alert alert-warning d-none">
+    <strong>Warning!</strong> This alert box could indicate a warning that might need attention.
+  </div>
+  <div class="alert alert-danger d-none">
+    <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+  </div>

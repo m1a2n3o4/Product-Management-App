@@ -20,6 +20,7 @@ This file contains my development notes for the ProManageApp project. It include
 ---
 
 ### 3. Working on Landaing Page
+     ## Person form 
   - A page with Registration / Login.
   - Need to use same form for both Reg and Login.
   - Add Dynmic form with custom Validation methods.

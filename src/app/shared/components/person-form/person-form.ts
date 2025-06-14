@@ -1,11 +1,49 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Person } from '../../../core/models/person.model';
+import { formValidators } from '../../../constants/formvalidations';
+import { NotoficationsComponent } from '../notofications-component/notofications-component';
 
 @Component({
   selector: 'app-person-form',
-  imports: [],
+  standalone: true,
+  imports: [FormsModule, CommonModule, NotoficationsComponent],
   templateUrl: './person-form.html',
-  styleUrl: './person-form.css'
+  styleUrls: ['./person-form.css']
 })
 export class PersonForm {
+  person: Person = {
+    businessName: '',
+    fullName: '',
+    userName: '',
+    password: '',
+    isRegister: true
+  };
 
+  errors: string[] = []; // Store validation errors
+
+  handelForm() {
+    if (this.person.isRegister) {
+      console.log('Registering:', this.person);
+      this.errors = formValidators(this.person, ['businessName', 'fullName', 'userName', 'password']); // Validate all fields for registration
+      if (this.errors.length > 0) {
+        console.error('Validation Errors:', this.errors);
+        return;
+      }
+      // Add logic for registration (e.g., API call)
+    } else {
+      console.log('Logging in:', this.person);
+      this.errors = formValidators(this.person, ['userName', 'password']); // Validate only userName and password for login
+      if (this.errors.length > 0) {
+        console.error('Validation Errors:', this.errors);
+        return;
+      }
+      // Add logic for login (e.g., API call)
+    }
+  }
+
+  toggleForm() {
+    this.person.isRegister = !this.person.isRegister;
+  }
 }
