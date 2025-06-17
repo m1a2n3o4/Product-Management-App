@@ -9,7 +9,8 @@
     </div>
 
     <div class="text-center my-4">
-      <h1 class="fw-bold display-5">Check all your products<br>Add, update or manage !</h1>
+      <h1 class="fw-bold display-5">Check all your products<br>Add, update or manage!</h1>
+      <button class="btn btn-primary mt-3" (click)="openProductForm()">Add Product</button>
     </div>
 
     <div class="d-flex justify-content-center gap-3 px-3">
@@ -19,13 +20,25 @@
       </div>
     </div>
 
-   
     <div class="container mt-5">
       <div class="row text-dark">
-        <!-- Dynamically call product-lits-item here-->
         <div class="col-md-3 mb-4" *ngFor="let product of products">
-           <app-product-list-item-component [product]="product"></app-product-list-item-component>
-        </div>    
+          <app-product-list-item-component [product]="product" (edit)="editProduct(product)"></app-product-list-item-component>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" [class.show]="showModal" style="display: block;" *ngIf="showModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">{{ isEditMode ? 'Update Product' : 'Add Product' }}</h5>
+            <button type="button" class="btn-close" (click)="closeProductForm()"></button>
+          </div>
+          <div class="modal-body">
+            <app-product-form-component [product]="selectedProduct || { id: 0, name: '', description: '', price: 0 }" (save)="saveProduct($event)"></app-product-form-component>
+          </div>
+        </div>
       </div>
     </div>
   </div>

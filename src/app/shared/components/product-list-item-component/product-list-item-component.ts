@@ -9,5 +9,10 @@ import { Product } from '../../../core/models/product.model';
 })
 export class ProductListItemComponent {
   @Input() product!: Product;
+  @Output() edit = new EventEmitter<Product>(); 
+
+  onEdit() {
+    this.edit.emit(this.product); 
+  }
 
 }
