@@ -1,7 +1,7 @@
 export const formValidators = (formValues: any, fieldsToValidate: string[] = []): string[] => {
   const errors: string[] = [];
 
-  // Validate User Name
+
   if (fieldsToValidate.includes('userName') || fieldsToValidate.length === 0) {
     if (!formValues.userName || formValues.userName.trim().length === 0) {
       errors.push('User Name should not be empty.');
@@ -10,7 +10,7 @@ export const formValidators = (formValues: any, fieldsToValidate: string[] = [])
     }
   }
 
-  // Validate Password
+ 
   if (fieldsToValidate.includes('password') || fieldsToValidate.length === 0) {
     if (!formValues.password || formValues.password.trim().length === 0) {
       errors.push('Password should not be empty.');
@@ -36,6 +36,31 @@ export const formValidators = (formValues: any, fieldsToValidate: string[] = [])
       errors.push('Full Name must be at least 6 characters long.');
     }
   }
+
+  // Validate for product forms. 
+  if (fieldsToValidate.includes('name')) {
+    if (!formValues.name || formValues.name.trim().length === 0) {
+      errors.push('Product Name should not be empty.');
+    } else if (formValues.name.length < 4) {
+      errors.push('Full Name must be at least 4 characters long.');
+    }
+  }
+  // Validate product description
+  if (fieldsToValidate.includes('description')) {
+    if (!formValues.description || formValues.description.trim().length === 0) {
+      errors.push('Product Description should not be empty.');
+    } else if (formValues.description.length < 4) {
+      errors.push('Full Description must be at least 4 characters long.');
+    }
+  }
+
+    // Validate product price
+    if (fieldsToValidate.includes('price')) {
+      if (!formValues.price) {
+        errors.push('Product price should not be empty.');
+      }
+    }
+
 
   return errors;
 };

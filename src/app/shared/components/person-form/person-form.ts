@@ -22,12 +22,12 @@ export class PersonForm {
     isRegister: true
   };
 
-  errors: string[] = []; // Store validation errors
+  errors: string[] = [];
 
   handelForm() {
     if (this.person.isRegister) {
       console.log('Registering:', this.person);
-      this.errors = formValidators(this.person, ['businessName', 'fullName', 'userName', 'password']); // Validate all fields for registration
+      this.errors = formValidators(this.person, ['businessName', 'fullName', 'userName', 'password']); 
       if (this.errors.length > 0) {
         console.error('Validation Errors:', this.errors);
         return;
@@ -35,7 +35,7 @@ export class PersonForm {
       // Add logic for registration (e.g., API call)
     } else {
       console.log('Logging in:', this.person);
-      this.errors = formValidators(this.person, ['userName', 'password']); // Validate only userName and password for login
+      this.errors = formValidators(this.person, ['userName', 'password']); 
       if (this.errors.length > 0) {
         console.error('Validation Errors:', this.errors);
         return;
