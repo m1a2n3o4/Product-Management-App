@@ -54,10 +54,15 @@ export class ProductListComponent implements OnInit {
       }
     } else {
       // Add new product
-      product.id = this.products.length + 1; // Generate new ID
+      product.id = this.products.length + 1;
       this.products.push(product);
     }
-    this.closeProductForm(); // Close modal after saving
+    this.closeProductForm();
+  }
+
+  deleteProduct(productId: number) {
+    console.log(productId);
+    this.products = this.products.filter(product => product.id !== productId);
   }
 
 }

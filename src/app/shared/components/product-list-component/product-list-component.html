@@ -23,7 +23,11 @@
     <div class="container mt-5">
       <div class="row text-dark">
         <div class="col-md-3 mb-4" *ngFor="let product of products">
-          <app-product-list-item-component [product]="product" (edit)="editProduct(product)"></app-product-list-item-component>
+          <app-product-list-item-component
+          [product]="product"
+          (edit)="editProduct(product)"
+          (delete)="deleteProduct(product.id)"
+          ></app-product-list-item-component>
         </div>
       </div>
     </div>
@@ -36,7 +40,8 @@
             <button type="button" class="btn-close" (click)="closeProductForm()"></button>
           </div>
           <div class="modal-body">
-            <app-product-form-component [product]="selectedProduct || { id: 0, name: '', description: '', price: 0 }" (save)="saveProduct($event)"></app-product-form-component>
+            <app-product-form-component
+            [product]="selectedProduct || { id: 0, name: '', description: '', price: 0 }"(save)="saveProduct($event)"></app-product-form-component>
           </div>
         </div>
       </div>
