@@ -15,14 +15,19 @@
 
     <div class="d-flex justify-content-center gap-3 px-3">
       <div class="input-group" style="max-width: 500px;">
-        <input type="text" class="form-control" placeholder="Search for products">
+        <input
+         type="text"
+         [(ngModel)]="searchQuery"
+         class="form-control" placeholder="Search for products">
         <button class="btn btn-light">🔍</button>
       </div>
     </div>
 
+    
+
     <div class="container mt-5">
       <div class="row text-dark">
-        <div class="col-md-3 mb-4" *ngFor="let product of products">
+        <div class="col-md-3 mb-4" *ngFor="let product of filteredProducts">
           <app-product-list-item-component
           [product]="product"
           (edit)="editProduct(product)"

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ProductListItemComponent } from '../product-list-item-component/product-list-item-component';
 import { MockProductService } from '../../../core/services/mock-product.service';
 import { Product } from '../../../core/models/product.model';
@@ -8,18 +9,21 @@ import { ProductFormComponent } from '../product-form-component/product-form-com
 @Component({
   selector: 'app-product-list-component',
   standalone: true,
-  imports: [ProductListItemComponent, CommonModule, ProductFormComponent],
+  imports: [ProductListItemComponent, CommonModule, ProductFormComponent, FormsModule],
   templateUrl: './product-list-component.html',
   styleUrl: './product-list-component.css'
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
+  searchQuery: string = '';
+  sortOrder: string = 'default';
 
   constructor(private mockProductService: MockProductService) {}
 
   showModal: boolean = false; 
   isEditMode: boolean = false; 
   selectedProduct: Product | null = null;
+
 
   openProductForm() {
     this.isEditMode = false; 
@@ -39,8 +43,15 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.products = this.mockProductService.getProducts();
+    const allProducts = this.mockProductService.getProducts();
+    this.products = allProducts.sort( (a,b) => b.id - a.id);
     console.log(this.products);
+  }
+
+  get filteredProducts(): Product[] {
+    return this.products.filter(product =>
+      product.name.toLowerCase().includes(this.searchQuery.toLowerCase())
+    );
   }
 
   saveProduct(product: Product) {
