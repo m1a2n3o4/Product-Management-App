@@ -2,11 +2,11 @@ export const formValidators = (formValues: any, fieldsToValidate: string[] = [])
   const errors: string[] = [];
 
 
-  if (fieldsToValidate.includes('userName') || fieldsToValidate.length === 0) {
-    if (!formValues.userName || formValues.userName.trim().length === 0) {
-      errors.push('User Name should not be empty.');
-    } else if (formValues.userName.length < 6) {
-      errors.push('User Name must be at least 6 characters long.');
+  if (fieldsToValidate.includes('email') || fieldsToValidate.length === 0) {
+    if (!formValues.email || formValues.email.trim().length === 0) {
+      errors.push('email should not be empty.');
+    } else if (formValues.email.length < 6) {
+      errors.push('email be at least 6 characters long.');
     }
   }
 
@@ -20,31 +20,31 @@ export const formValidators = (formValues: any, fieldsToValidate: string[] = [])
   }
 
   // Validate Business Name (only for registration)
-  if (fieldsToValidate.includes('businessName')) {
-    if (!formValues.businessName || formValues.businessName.trim().length === 0) {
+  if (fieldsToValidate.includes('companyName')) {
+    if (!formValues.companyName || formValues.companyName.trim().length === 0) {
       errors.push('Business Name should not be empty.');
-    } else if (formValues.businessName.length < 6) {
+    } else if (formValues.companyName.length < 6) {
       errors.push('Business Name must be at least 6 characters long.');
     }
   }
 
   // Validate Full Name (only for registration)
-  if (fieldsToValidate.includes('fullName')) {
-    if (!formValues.fullName || formValues.fullName.trim().length === 0) {
+  if (fieldsToValidate.includes('name')) {
+    if (!formValues.name || formValues.name.trim().length === 0) {
       errors.push('Full Name should not be empty.');
-    } else if (formValues.fullName.length < 6) {
+    } else if (formValues.name.length < 6) {
       errors.push('Full Name must be at least 6 characters long.');
     }
   }
 
   // Validate for product forms. 
-  if (fieldsToValidate.includes('name')) {
-    if (!formValues.name || formValues.name.trim().length === 0) {
-      errors.push('Product Name should not be empty.');
-    } else if (formValues.name.length < 4) {
-      errors.push('Full Name must be at least 4 characters long.');
-    }
-  }
+  // if (fieldsToValidate.includes('name')) {
+  //   if (!formValues.name || formValues.name.trim().length === 0) {
+  //     errors.push('Product Name should not be empty.');
+  //   } else if (formValues.name.length < 4) {
+  //     errors.push('Full Name must be at least 4 characters long.');
+  //   }
+  // }
   // Validate product description
   if (fieldsToValidate.includes('description')) {
     if (!formValues.description || formValues.description.trim().length === 0) {

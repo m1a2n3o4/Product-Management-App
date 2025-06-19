@@ -22,12 +22,12 @@ export class ProductFormComponent {
 
   @Input() product!: Product; 
   @Output() save = new EventEmitter<Product>(); 
-  errors: string[] = [];
+  notifications: string[] = [];
   
   onSave() {
-    this.errors = formValidators(this.product, ['name', 'description', 'price']);
-    if (this.errors.length > 0) {
-      console.error('Validation Errors:', this.errors);
+    this.notifications = formValidators(this.product, ['name', 'description', 'price']);
+    if (this.notifications.length > 0) {
+      console.error('Validation Errors:', this.notifications);
       return;
     }
     this.save.emit(this.product); 

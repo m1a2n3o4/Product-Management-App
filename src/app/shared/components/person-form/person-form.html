@@ -8,23 +8,23 @@
     <app-skelton-loader-component></app-skelton-loader-component>
     <div class="card p-4 shadow-lg" style="width: 500px;">
         <h3>{{ person.isRegister ? 'Register you Business!' : 'Login to your Business!'}}</h3>
-        <app-notofications-component [errors]="errors"></app-notofications-component>
+        <app-notofications-component [notifications]="notifications"></app-notofications-component>
         <form>
             <div class="form-group mb-3" *ngIf="person.isRegister">
-                <label for="businessName">Business Name :</label>
-                <input type="text" class="form-control" name="businessName" [(ngModel)] = "person.businessName"/>
+                <label for="businessName">Company Name :</label>
+                <input type="text" class="form-control" name="companyName" [(ngModel)] = "person.companyName"/>
             </div>
             <div class="form-group mb-3" *ngIf="person.isRegister">
                 <label for="businessName">Full Name :</label>
-                <input type="text" class="form-control" name="fullName" [(ngModel)] = "person.fullName"/>
+                <input type="text" class="form-control" name="name" [(ngModel)] = "person.name"/>
             </div>
             <div class="form-group mb-3">
-                <label for="businessName">User Name :</label>
-                <input type="text" class="form-control" name="userName" [(ngModel)] = "person.userName"/>
+                <label for="businessName">E-mail :</label>
+                <input type="email" class="form-control" name="email" [(ngModel)] = "person.email"/>
             </div>
             <div class="form-group mb-3">
                 <label for="businessName">Password :</label>
-                <input type="text" class="form-control" name="password" [(ngModel)] = "person.password"/>
+                <input type="password" class="form-control" name="password" [(ngModel)] = "person.password"/>
             </div>
             <div class="form-group mb-3">
                 <button class="btn btn-primary w-100" (click)="handelForm()">

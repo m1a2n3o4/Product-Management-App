@@ -1,7 +1,7 @@
 export interface Person {
-    fullName: string;
-    businessName: string;
-    userName: string;
+    name: string;
+    companyName: string;
+    email: string;
     password: string;
     isRegister: boolean;
 }

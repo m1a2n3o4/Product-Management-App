@@ -9,5 +9,5 @@ import { CommonModule } from '@angular/common';
   styleUrl: './notofications-component.css'
 })
 export class NotoficationsComponent {
-  @Input() errors: string[] = [];
+  @Input() notifications: string[] = [];
 }

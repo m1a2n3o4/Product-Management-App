@@ -5,6 +5,9 @@ import { ProductListItemComponent } from '../product-list-item-component/product
 import { MockProductService } from '../../../core/services/mock-product.service';
 import { Product } from '../../../core/models/product.model';
 import { ProductFormComponent } from '../product-form-component/product-form-component';
+import { Router } from '@angular/router';
+import { StoreService } from '../../../core/data/userStore.service';
+
 
 @Component({
   selector: 'app-product-list-component',
@@ -17,8 +20,10 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
   searchQuery: string = '';
   sortOrder: string = 'default';
+  user: any;
 
-  constructor(private mockProductService: MockProductService) {}
+  constructor(private mockProductService: MockProductService, private router: Router, private userstoreService: StoreService ) {}
+  
 
   showModal: boolean = false; 
   isEditMode: boolean = false; 
@@ -43,6 +48,8 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user = this.userstoreService.getUser();
+
     const allProducts = this.mockProductService.getProducts();
     this.products = allProducts.sort( (a,b) => b.id - a.id);
     console.log(this.products);

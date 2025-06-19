@@ -1,10 +1,10 @@
 <div class="alert alert-warning d-none">
     <strong>Success!</strong> This alert box could indicate a successful or positive action.
   </div>
-  <div *ngIf="errors.length" class="alert alert-warning" style="width: 400px;">
-    <ul *ngIf="errors.length">
-        <li *ngFor="let error of errors">
-            {{ error }}
+  <div *ngIf="notifications.length" class="alert alert-warning" style="width: 400px;">
+    <ul *ngIf="notifications.length">
+        <li *ngFor="let notification of notifications">
+            {{ notification }}
         </li>
     </ul>
   <div class="alert alert-warning d-none">
